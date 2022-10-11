@@ -38,7 +38,7 @@ public class PaymentController {
         });
     }
 
-    private final String SECRET_KEY = "test_ak_mnRQoOaPz8LwjZD1Oljry47BMw6v";
+    private final String SECRET_KEY = "test_sk_O6BYq7GWPVvZJ9R9O5GVNE5vbo1d";
 
     @RequestMapping("/success")
     public String confirmPayment(
