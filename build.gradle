@@ -1,0 +1,32 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.tosspayments.sample'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+// Log4J2 Vulnerability (CVE-2021-44228, CVE-2021-45046)
+// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228
+// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046
+// https://logging.apache.org/log4j/2.x/security.html
+// https://spring.io/blog/2021/12/10/log4j2-vulnerability-and-spring-boot
+ext['log4j2.version'] = '2.16.0'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
